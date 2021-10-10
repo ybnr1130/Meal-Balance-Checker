@@ -1,24 +1,38 @@
-# README
+# <Meal Balance Checker>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+体重のコントロールをしたい方に向けて食生活のバランスチェックと知識を共有しあえるSNS機能を持つサイト
 
-Things you may want to cover:
+### サイトテーマ
+痩せたい人、太りたい人、自分の目指す体型を目指そう！
 
-* Ruby version
+### テーマを選んだ理由
+最近、食生活の見直しを行なっています。その時に食べている物を登録するとカロリーが表示される機能を持つアプリ等はあるものの、PFC（Protain、Fat、Carbon）のいずれかを意識的に摂取するにはどのような料理を食べたら良いのかなどの検索機能も併せて持つアプリ等がないと感じていました。また、体重を減らす目的のアプリはあるものの、増やす目的のアプリはないということも感じていました。そこで、増減させたい栄養素を条件に料理を検索することで、今の自分がどのようなメニューを食べたら良いのかがわかるサイトを作りたいと思い、このテーマを選定しました。
 
-* System dependencies
+### ターゲットユーザ
+今の体型および体重に悩みを抱えている方
 
-* Configuration
+### 主な利用シーン
+食事の前後と毎朝の体重計の記録時
 
-* Database creation
+## 設計書
+https://drive.google.com/drive/folders/1Bmrf1nQS-nRsuvisJcV10_idajB6zmeq?usp=sharing
 
-* Database initialization
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1JLTbYOdlPlcvrhfIFe-QPoISLJ3HoDHt77I2X9yG5Nk/edit#gid=0
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
+## 使用素材
+- なし
 
-* Deployment instructions
+## 将来実装したい機能
+- 飲食店用のアカウント登録およびレシピ登録機能
+- スマホ、タブレットブラウザへの対応
+- QRコード読み込みで飲食店が登録したレシピ一覧へ移行する機能
 
-* ...

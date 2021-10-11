@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_information_id: 1
+  protain: MyString
+  fat: MyString
+  carbon: MyString
+  category: 1
+
+two:
+  user_information_id: 1
+  protain: MyString
+  fat: MyString
+  carbon: MyString
+  category: 1

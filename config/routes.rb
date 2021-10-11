@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-
-  devise_for :users
   root to: 'homes#top'
+  devise_for :users
+
   # resourcesを使用したルーティング
   resources :menus, except: [:show]
   resources :recipes
@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   # customersコントローラーのルーティング
   get 'customers/new' => 'customers#new', as: 'customers_info'
   post 'customers' => 'customers#create', as: 'customer'
+
+  #CSVインポート用のルーティング
+  post 'import' => 'foods#import', as: 'import_foods'
+
 end

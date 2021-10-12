@@ -1,2 +1,57 @@
-<h1>Menus#index</h1>
-<p>Find me in app/views/menus/index.html.erb</p>
+<h2>カレンダー</h2>
+
+<h2>身体記録</h2>
+  <table>
+    <tr>
+      <th>体重</th>
+      <th>体脂肪</th>
+    </tr>
+    <tr>
+      <td><%#= user_informationweight %></td>
+      <td><%#= user_informationbody_fat %></td>
+      <!--user_informationテーブルに体脂肪カラム追加が必要-->
+    </tr>
+  </table>
+
+<h2>本日の栄養バランス</h2>
+<div>
+  <table>
+    <tr>
+      <th>タンパク質</th>
+      <th>脂質</th>
+      <th>炭水化物</th>
+      <th>合計摂取カロリー</th>
+    </tr>
+    <tr>
+      <!--本日の食事の合計値を入力させる。下表にて値が集計されて、表の中に入る仕組みを作る-->
+      <td><%#= sum_protain %></td>
+      <td><%#= sum_fat %></td>
+      <td><%#= sum_carbon %></td>
+      <td><%#= sum %></td>
+    </tr>
+  </table>
+</div>
+<h2>本日の食事</h2>
+<!--カレンダーにて日数を選択されたのちにデータが入るような仕組みにする-->
+<%= link_to new_menu_path do %>
+  <p>新規登録</p>
+<% end %>
+<div>
+  <h3><%#= menucategory %></h3>
+  <table>
+    <tr>
+      <th></th>
+      <th>タンパク質</th>
+      <th>脂質</th>
+      <th>炭水化物</th>
+      <th>合計摂取カロリー</th>
+    </tr>
+    <tr>
+      <th>合計</th>
+      <th><%#= sum_protain %></th>
+      <th><%#= %></th>
+      <th><%#= %></th>
+      <th><%#= %></th>
+    </tr>
+  </table>
+</div>

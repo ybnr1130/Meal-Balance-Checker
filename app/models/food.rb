@@ -1,5 +1,9 @@
 class Food < ApplicationRecord
 
+  # リレーションの記述
+  has_many :recipe_foods
+  has_many :menu_foods
+
   #ここからCSVファイルインポートに関する記述
   #参考元：https://qiita.com/d0ne1s/items/d49423796dd1c801afd3
   #参考元：https://note.com/marikooota/n/n6215adaecf9a
@@ -15,7 +19,7 @@ class Food < ApplicationRecord
 
   #更新を許可するカラムを定義する
   def self.updatable_attributes
-    ["id", "name", "protain", "fat", "carbon"]
+    ["id", "name", "protain", "fat", "carbon", "weight", "created_at", "updated_at"]
   end
   #ここまでCSVファイルインポートに関する記述
 

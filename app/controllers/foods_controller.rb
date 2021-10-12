@@ -7,4 +7,7 @@ class FoodsController < ApplicationController
     redirect_to root_url
   end
 
+  def data
+  end
+
 end

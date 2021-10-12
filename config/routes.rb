@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   post 'settings/contact' => 'settings#send', as: 'send'
 
   # searchsコントローラーのルーティング
-  get 'search' => 'searchs#search', as: 'search'
+  get 'search/food' => 'searchs#search_food', as: 'search_food'
+  get 'search/recipe' => 'searchs#search_recipe', as: 'search_recipe'
 
   # customersコントローラーのルーティング
   get 'customers/new' => 'customers#new', as: 'customers_info'
@@ -24,5 +25,5 @@ Rails.application.routes.draw do
 
   #CSVインポート用のルーティング
   post 'import' => 'foods#import', as: 'import_foods'
-
+  get 'import' => 'foods#data', as: 'import'
 end

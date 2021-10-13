@@ -23,4 +23,14 @@ class Food < ApplicationRecord
   end
   #ここまでCSVファイルインポートに関する記述
 
+  # ここから検索関連のメソッド
+  def self.food_serch_for(content)
+    Food.where('name LIKE ?', "%{params[:content]}%")
+  end
+
+  def self.recipe_serch_for(content)
+    Recipe.where('name LIKE ?', '%'+content+'%')
+  end
+  # ここまで検索関連のメソッド
+
 end

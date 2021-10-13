@@ -1,13 +1,12 @@
-<%= form_with model:@menu %>
+<%#= form_with url:menus_path, local:true do |f| %>
   <h2>食材登録</h2>
   <h3>食材を追加</h3>
   <!--食材検索欄-->
-  <%= form_with url:search_food_path, local:true do |f| %>
+  <%= form_with url:search_food_path, method: :get, local:true do |f| %>
     <%= f.text_field :content %>
     <%= f.submit "検索" %>
   <% end %>
   <!--食材栄養素一覧-->
-  <% foods.each do |food| %>
   <table>
     <tr>
       <th>食材名</th>
@@ -19,40 +18,58 @@
       <th></th>
       <th></th>
     </tr>
-    <tr>
-      <td><%= food.name %></td>
-      <td><%= food.protain %></td>
-      <td><%= food.fat %></td>
-      <td><%= food.carbon %></td>
-      <td><%#= %></td>
-      <td><%= food_sum == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
-      <td>変更</td>
-      <td>削除</td>
-    </tr>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.protain %></td>
+        <td><%= food.fat %></td>
+        <td><%= food.carbon %></td>
+        <td><%#= %></td>
+        <td><%= food_cal == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
+        <% food_cal_sum += food_cal %>
+        <% food_cal == 0 %>
+        <td>変更</td>
+        <td>削除</td>
+      </tr>
+    <% end %>
   </table>
-  <% end %>
   <h3><%= link_to "食材を追加"  %></h3>
-  <%= form_with url:search_recipe_path, local:true do |f| %>
+  <%= form_with url:search_recipe_path, method: :get, local:true do |f| %>
     <p>追加したい食材を入力してください</p>
-    <%= f.text_area :content %>
-  <%= f.submit "検索" %>
+    <%= f.text_field :content %>
+    <%= f.submit "検索" %>
+  <% end %>
   <h3>栄養素合計</h3>
   <table>
     <tr>
+      
       <th>タンパク質</th>
       <th>脂質</th>
       <th>炭水化物</th>
+      <th>量</th>
       <th>合計カロリー</th>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><%= recipe.protain %></td>
+        <td><%= recipe.fat %></td>
+        <td><%= recipe.carbon %></td>
+        <td><%= f.text_field :weight %></td>
+        <td><%= recipe_cal == recipe.protain.to_i*4 + recipe.fat.to_i*9 + recipe.carbon.to_i*4 %></td>
+        <% recipe_cal_sum += recipe_cal %>
+        <% recipe_cal == 0 %>
+      </tr>
+    <% end %>
   </table>
   <h3>カテゴリー</h3>
-  <!--朝食、昼食、夕食、間食一覧をプルダウンで表示する-->
-
-  <%= f.submit "保存" %>
-<% end %>
+  <%= f.radio_button :category, morning %>
+  <%= f.label :category, "朝食", {value: morning} %>
+  <%= f.radio_button :category, lunch %>
+  <%= f.label :category, "昼食", {value: lunch} %>
+  <%= f.radio_button :category, snack %>
+  <%= f.label :category, "間食", {value: snack} %>
+  <%= f.radio_button :category, dinner %>
+  <%= f.label :category, "夕食", {value: dinner} %>
+  <%#= f.submit "保存" %>
+<%# end %>

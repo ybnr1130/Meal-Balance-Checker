@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'menu_recipes/create'
+  get 'menu_foods/create'
   root to: 'homes#top'
   devise_for :users
 
   # resourcesを使用したルーティング
   resources :menus, except: [:show]
+  resources :menu_foods, only: [:create]
+  resources :menu_recipes, only: [:create]
   resources :recipes
   resources :recipe_foods, only: [:new, :create]
   resources :foods, only: [:create]

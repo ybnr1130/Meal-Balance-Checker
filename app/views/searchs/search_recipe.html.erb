@@ -1,0 +1,27 @@
+<h2>候補</h2>
+<%= form_with menu_foods_path, local:true do |f| %>
+  <table>
+    <tr>
+      <th>名前</th>
+      <th>タンパク質</th>
+      <th>脂質</th>
+      <th>炭水化物</th>
+      <th>摂取量</th>
+      <th>合計カロリー</th>
+      <th></th>
+    </tr>
+    <% @records.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><%= recipe.protain %></td>
+        <td><%= recipe.fat %></td>
+        <td><%= recipe.carbon %></td>
+        <td><%= f.text_field :weight %></td>
+        <td><%= food_sum == recipe.protain.to_i*4 + recipe.fat.to_i*9 + recipe.carbon.to_i*4 %></td>
+        <%= f.hidden_field :user_id, :value => curremt_user.id %>
+        <%= f.hidden_field :recipe_id, :value => recipe.id %>
+        <td><%= f.submit '登録' %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

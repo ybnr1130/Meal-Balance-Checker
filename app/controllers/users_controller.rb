@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def send
-    @user = User.new(params[:id])
+    @user = User.new(user_params)
     if @user.save
       redirect_to sent_path
     else
@@ -47,7 +47,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:account_name, :height, :weight, :basal_metabolism, :target, :term, :status)
+    params.require(:user).permit(:account_name, :height, :weight, :basal_metabolism, :target, :term, :status, :reason, :reason_detail)
   end
+
 
 end

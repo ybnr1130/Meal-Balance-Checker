@@ -24,12 +24,16 @@
         <td><%= food.protain %></td>
         <td><%= food.fat %></td>
         <td><%= food.carbon %></td>
-        <td><%#= %></td>
-        <td><%= food_cal == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
-        <% food_cal_sum += food_cal %>
-        <% food_cal == 0 %>
-        <td>変更</td>
-        <td>削除</td>
+        <td><%= menu_food.weight %></td>
+        <td><%= @food_calory == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
+        <!--食材から摂取する各栄養素の合計値を算出する-->
+        <%# @food_protain_sum += food.protain %>
+        <%# @food_fat_sum += food.fat %>
+        <%# @food_carbon_sum += food.carbon %>
+        <%# @food_calory_sum += @food_calory %>
+        <%# @food_calory == 0 %>
+        <td>変更機能を実装する</td>
+        <td>削除機能を実装する</td>
       </tr>
     <% end %>
   </table>
@@ -42,11 +46,11 @@
   <h3>栄養素合計</h3>
   <table>
     <tr>
-      
+
       <th>タンパク質</th>
       <th>脂質</th>
       <th>炭水化物</th>
-      <th>量</th>
+      <th>人前</th>
       <th>合計カロリー</th>
     </tr>
     <% @recipes.each do |recipe| %>
@@ -55,21 +59,55 @@
         <td><%= recipe.protain %></td>
         <td><%= recipe.fat %></td>
         <td><%= recipe.carbon %></td>
-        <td><%= f.text_field :weight %></td>
-        <td><%= recipe_cal == recipe.protain.to_i*4 + recipe.fat.to_i*9 + recipe.carbon.to_i*4 %></td>
-        <% recipe_cal_sum += recipe_cal %>
-        <% recipe_cal == 0 %>
+        <td><%= menu_recipe.weight %></td>
+        <td><%= @recipe_calory = recipe.protain.to_i*4 + recipe.fat.to_i*9 + recipe.carbon.to_i*4 %></td>
+        <!--モデルに式を記述する。Viewには呼び出しだけをかく。-->
+        <%# @recipe_protain_sum += recipe.protain %>
+        <%# @recipe_fat_sum += recipe.fat %>
+        <%# @recipe_carbon_sum += recipe.carbon %>
+        <%# @recipe_calory_sum += @recipe_calory %>
+        <%# @recipe_calory == 0 %>
+        <!--＝＝は比較。今回は＝0-->
       </tr>
     <% end %>
   </table>
-  <h3>カテゴリー</h3>
-  <%= f.radio_button :category, morning %>
-  <%= f.label :category, "朝食", {value: morning} %>
-  <%= f.radio_button :category, lunch %>
-  <%= f.label :category, "昼食", {value: lunch} %>
-  <%= f.radio_button :category, snack %>
-  <%= f.label :category, "間食", {value: snack} %>
-  <%= f.radio_button :category, dinner %>
-  <%= f.label :category, "夕食", {value: dinner} %>
-  <%#= f.submit "保存" %>
-<%# end %>
+  <%= form_with url:menus_path, local:true do |f| %>
+    <!--食品とレシピの各栄養素とカロリーを合算し、１食の摂取栄養素およびカロリーを算出、値を登録する-->
+    <%# @sum_calory = (@recipe_calory_sum + @food_calory_sum) %>
+    <%# @sum_protain = (@food_protain_sum + @recipe_protain_sum) %>
+    <%# @sum_fat = (@food_fat_sum + @recipe_fat_sum) %>
+    <%# @sum_carbon = (@food_carbon_sum + @recipe_carbon_sum) %>
+    <% f.hidden_field :protain, :value => @sum_protain %>
+    <% f.hidden_field :fat, :value => @sum_fat %>
+    <% f.hidden_field :protain, :value => @sum_carbon %>
+
+    <h3>栄養素合計</h3>
+    <table>
+      <tr>
+        <th>タンパク質(g)</th>
+        <th>脂質(g)</th>
+        <th>炭水化物(g)</th>
+        <th>カロリー(kcal)</th>
+      </tr>
+      <tr>
+        <td><%#= @sum_protain %></td>
+        <td><%#= @sum_fat %></td>
+        <td><%#= @sum_carbon %></td>
+        <td><%#= @sum_calory %></td>
+      </tr>
+    </table>
+    <%# @food_calory_sum = @food_carbon_sum = @food_protain_sum = @food_fat_sum = 0 %>
+    <%# @recipe_calory_sum = @recipe_carbon_sum = @recipe_protain_sum = @recipe_fat_sum = 0 %>
+
+    <h3>カテゴリー</h3>
+    <%= f.radio_button :category, "朝食" %>
+    <%= f.label :category, "朝食" %>
+    <%= f.radio_button :category, "昼食" %>
+    <%= f.label :category, "昼食" %>
+    <%= f.radio_button :category, "間食" %>
+    <%= f.label :category, "間食" %>
+    <%= f.radio_button :category, "夕食" %>
+    <%= f.label :category, "夕食" %>
+    <%= f.submit "保存" %>
+  <% end %>
+<%# end %>-->

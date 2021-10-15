@@ -25,11 +25,11 @@ class Food < ApplicationRecord
 
   # ここから検索関連のメソッド
   def self.food_serch_for(content)
-    Food.where('name LIKE ?', "%{params[:content]}%")
+    Food.where( 'name LIKE ?', "%#{content}%" )
   end
 
   def self.recipe_serch_for(content)
-    Recipe.where('name LIKE ?', '%'+content+'%')
+    Recipe.where( 'name LIKE ?', "%#{content}%" )
   end
   # ここまで検索関連のメソッド
 

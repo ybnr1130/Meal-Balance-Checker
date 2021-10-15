@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_055540) do
+ActiveRecord::Schema.define(version: 2021_10_14_163342) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "user_information_id", null: false
@@ -109,6 +109,17 @@ ActiveRecord::Schema.define(version: 2021_10_12_055540) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "favorite_id"
+    t.string "account_name"
+    t.string "height"
+    t.string "weight"
+    t.string "basal_metabolism"
+    t.string "target"
+    t.string "term"
+    t.boolean "status"
+    t.integer "reason"
+    t.text "reason_detail"
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

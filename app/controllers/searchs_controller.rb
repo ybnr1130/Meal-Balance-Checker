@@ -1,6 +1,6 @@
 class SearchsController < ApplicationController
   def search_food
-    @records = Food.food_serch_for(@content)
+    @records = Food.food_serch_for(params[:content])
     @menu_food = MenuFood.new
   end
 

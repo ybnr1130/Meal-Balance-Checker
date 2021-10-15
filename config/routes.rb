@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'menu_recipes/create'
-  get 'menu_foods/create'
   root to: 'homes#top'
   devise_for :users
 
@@ -11,21 +9,19 @@ Rails.application.routes.draw do
   resources :recipes
   resources :recipe_foods, only: [:new, :create]
   resources :foods, only: [:create]
-  resources :settings, only: [:index, :edit, :update]
+  resources :users, only: [:show, :create, :edit, :update, :index]
 
-  # settingsコントローラーのルーティング
-  get 'settings/:id/delete' => 'settings#delete', as: 'setting_delete'
-  delete 'settings/:id' => 'settings#deleted', as: 'setting_deleted'
-  get 'settings/contact/:id' => 'settings#contact', as: 'contact'
-  post 'settings/contact' => 'settings#send', as: 'send'
+  # usersコントローラーの編集画面関連のルーティング
+  get 'users/:id/settings' => 'users#setting', as: 'user_setting'
+  get 'users/:id/delete' => 'users#delete', as: 'user_delete'
+  patch 'users/:id' => 'users#deleted', as: 'user_deleted'
+  get 'users/contact/:id' => 'users#contact', as: 'contact'
+  post 'users/contact' => 'users#send', as: 'send'
+  get 'users/sent' => 'users#sent', as: 'sent'
 
   # searchsコントローラーのルーティング
   get 'search/food' => 'searchs#search_food', as: 'search_food'
   get 'search/recipe' => 'searchs#search_recipe', as: 'search_recipe'
-
-  # customersコントローラーのルーティング
-  get 'customers/new' => 'customers#new', as: 'customers_info'
-  post 'customers' => 'customers#create', as: 'customer'
 
   #CSVインポート用のルーティング
   post 'import' => 'foods#import', as: 'import_foods'

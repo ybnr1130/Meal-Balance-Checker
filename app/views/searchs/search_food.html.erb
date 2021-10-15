@@ -1,5 +1,6 @@
 <h2>候補</h2>
-<%= form_with menu_foods_path, local:true do |f| %>
+<%= form_with url:menu_foods_path, local:true do |f| %>
+<p>※表示値は全て100g当たりの成分値となります</p>
   <table>
     <tr>
       <th>名前</th>
@@ -17,9 +18,9 @@
         <td><%= food.fat %></td>
         <td><%= food.carbon %></td>
         <td><%= f.text_field :weight %></td>
-        <td><%= food_sum == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
-        <%= f.hidden_field :user_id, :value => curremt_user.id %>
-        <%= f.hidden_field :food_id, :value => food.id %>
+        <td><%#= food_sum == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
+        <%#= f.hidden_field :user_id, :value => curremt_user.id %>
+        <%#= f.hidden_field :food_id, :value => food.id %>
         <td><%= f.submit '登録' %></td>
       </tr>
     <% end %>

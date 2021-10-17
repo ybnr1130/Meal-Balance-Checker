@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_163342) do
+ActiveRecord::Schema.define(version: 2021_10_16_132315) do
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "user_information_id", null: false
+    t.integer "user_id", null: false
     t.integer "object", null: false
     t.text "body", null: false
     t.datetime "created_at", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_163342) do
     t.integer "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sum_calory"
   end
 
   create_table "recipe_foods", force: :cascade do |t|

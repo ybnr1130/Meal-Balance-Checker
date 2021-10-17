@@ -25,7 +25,7 @@
         <td><%= food.fat %></td>
         <td><%= food.carbon %></td>
         <td><%= menu_food.weight %></td>
-        <td><%= @food_calory == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
+        <td><%= @food_calory = (food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4) *menu_food.weight %></td>
         <!--食材から摂取する各栄養素の合計値を算出する-->
         <%# @food_protain_sum += food.protain %>
         <%# @food_fat_sum += food.fat %>

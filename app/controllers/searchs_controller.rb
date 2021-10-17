@@ -5,7 +5,7 @@ class SearchsController < ApplicationController
   end
 
   def search_recipe
-    @records = Recipe.recipe_search_for(@content)
+    @records = Recipe.recipe_search_for(params[:content])
     @menu_recipe = MenuRecipe.new
   end
 end

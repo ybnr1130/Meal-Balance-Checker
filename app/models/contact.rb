@@ -1,3 +1,3 @@
-class Contact <
-  belongs_to :user_information
+class Contact < ApplicationRecord
+  belongs_to :user
 end

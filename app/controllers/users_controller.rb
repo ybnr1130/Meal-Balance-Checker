@@ -31,23 +31,11 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def contact
-    @user = User.new
-  end
-
-  def send
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to sent_path
-    else
-      render :contact
-    end
-  end
 
   private
 
   def user_params
-    params.require(:user).permit(:account_name, :height, :weight, :basal_metabolism, :target, :term, :status, :reason, :reason_detail)
+    params.require(:user).permit(:account_name, :height, :weight, :basal_metabolism, :target, :term, :status)
   end
 
 

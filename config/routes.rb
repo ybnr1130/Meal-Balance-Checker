@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   get 'users/:id/settings' => 'users#setting', as: 'user_setting'
   get 'users/:id/delete' => 'users#delete', as: 'user_delete'
   patch 'users/:id' => 'users#deleted', as: 'user_deleted'
-  get 'users/contact/:id' => 'users#contact', as: 'contact'
-  post 'users/contact' => 'users#send', as: 'send'
-  get 'users/sent' => 'users#sent', as: 'sent'
+
+  # contactコントローラのルーティング
+  get 'contacts/:id' => 'contacts#contact', as: 'contact'
+  post 'contacts/contact' => 'contacts#send_user', as: 'send'
+  get 'contacts/sent' => 'contacts#sent_user', as: 'sent'
 
   # searchsコントローラーのルーティング
   get 'search/food' => 'searchs#search_food', as: 'search_food'

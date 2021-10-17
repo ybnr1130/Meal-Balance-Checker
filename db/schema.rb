@@ -10,19 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_132315) do
+ActiveRecord::Schema.define(version: 2021_10_17_052119) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "object", null: false
     t.text "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_information_id", null: false
-    t.string "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,16 +39,8 @@ ActiveRecord::Schema.define(version: 2021_10_16_132315) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "menu_recipes", force: :cascade do |t|
-    t.integer "menu_id", null: false
-    t.integer "recipe_id", null: false
-    t.string "weight", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "menus", force: :cascade do |t|
-    t.integer "user_information_id", null: false
+    t.integer "user_id", null: false
     t.string "protain", null: false
     t.string "fat", null: false
     t.string "carbon", null: false
@@ -63,43 +48,6 @@ ActiveRecord::Schema.define(version: 2021_10_16_132315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sum_calory"
-  end
-
-  create_table "recipe_foods", force: :cascade do |t|
-    t.integer "food_id", null: false
-    t.integer "recipe_id", null: false
-    t.integer "weight", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.integer "　user_information_id"
-    t.integer "favorite_id", null: false
-    t.string "name", null: false
-    t.string "seasoning", null: false
-    t.string "seasoning_weight", null: false
-    t.boolean "speed", null: false
-    t.integer "time", null: false
-    t.boolean "status", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_informations", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "favorite_id", null: false
-    t.string "account_name", null: false
-    t.string "height"
-    t.string "weight"
-    t.string "basal_metabolism"
-    t.string "target"
-    t.string "term"
-    t.boolean "status", null: false
-    t.integer "reason"
-    t.text "reason_detail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

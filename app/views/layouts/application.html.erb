@@ -13,8 +13,8 @@
     <a href="/"><span>Meal balance checker</span></a>
     <ul>
       <% if user_signed_in? %>
-        <li><%= link_to '記録関連', menus_path %></li>
-        <li><%= link_to 'レシピ関連', recipes_path %></li>
+        <li><%#= link_to 'バランスチェック', _path %></li>
+        <li><%#= link_to '検索', recipes_path %></li>
         <li><%= link_to '設定', user_setting_path(current_user.id) %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>

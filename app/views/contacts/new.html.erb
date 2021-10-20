@@ -1,5 +1,5 @@
 <h2>お問合せ・要望フォーム</h2>
-<%= form_with model: @contact, url: send_path, local: true do |f| %>
+<%= form_with model: @contact, url: send_user_contacts_path, local: true do |f| %>
   <p>・どちらの内容を入力しますか？</p>
   <%= f.radio_button :object, '0' %>
   <%= f.label :object, "お問合せ" %>

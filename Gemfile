@@ -63,3 +63,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'roo'
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
+gem 'pry-byebug', group: :development

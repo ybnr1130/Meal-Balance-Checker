@@ -1,7 +1,6 @@
 class Food < ApplicationRecord
 
   # リレーションの記述
-  has_many :recipe_foods
   has_many :menu_foods
 
   #ここからCSVファイルインポートに関する記述

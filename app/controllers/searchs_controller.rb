@@ -4,8 +4,12 @@ class SearchsController < ApplicationController
     @menu_food = MenuFood.new
   end
 
-  # def search_recipe
-  #   @records = Recipe.recipe_search_for(params[:content])
-  #   @menu_recipe = MenuRecipe.new
-  # end
+  def keyword
+
+  end
+
+  def search_result
+    @records = Food.food_serch_for(params[:content])
+  end
+
 end

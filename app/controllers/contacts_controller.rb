@@ -1,15 +1,15 @@
 class ContactsController < ApplicationController
 
-  def contact
+  def new
     @contact = Contact.new
   end
 
   def send_user
     @contact = Contact.new(contact_params)
     if @contact.save
-      redirect_to sent_path
+      redirect_to sent_user_contacts_path
     else
-      render :contact
+      render :new
     end
   end
 

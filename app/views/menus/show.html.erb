@@ -1,0 +1,46 @@
+<h2>レシピ名</h2>
+<%= @menu.name %>
+
+<h2>料理画像</h2>
+<p>料理画像追加フォームを作成する</p>
+
+<h2>食材一覧</h2>
+  <table>
+    <tr>
+      <th>食材名</th>
+      <th>タンパク質</th>
+      <th>脂質</th>
+      <th>炭水化物</th>
+      <th>人前</th>
+      <th>合計カロリー</th>
+    </tr>
+    <%# @menu_foods.each do |food| %>
+      <tr>
+        <td><%#= food.name %></td>
+        <td><%#= food.protain %></td>
+        <td><%#= food.fat %></td>
+        <td><%#= food.carbon %></td>
+        <td><%#= menu_food.weight %></td>
+        <td><%#= @food_calory = (food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4) *menu_food.weight %></td>
+        <!--食材から摂取する各栄養素の合計値を算出する-->
+      </tr>
+    <%# end %>
+  </table>
+
+    <h3>栄養素合計</h3>
+    <table>
+      <tr>
+        <th>タンパク質(g)</th>
+        <th>脂質(g)</th>
+        <th>炭水化物(g)</th>
+        <th>カロリー(kcal)</th>
+      </tr>
+      <tr>
+        <td><%#= @menu.sum_protain %></td>
+        <td><%#= @menu.sum_fat %></td>
+        <td><%#= @menu.sum_carbon %></td>
+        <td><%#= @menu.sum_calory %></td>
+      </tr>
+    </table>
+<%= link_to "編集", edit_menu_path %>
+<%= link_to "削除", menu_path, method: :delete %>

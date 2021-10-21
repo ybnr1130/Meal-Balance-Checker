@@ -9,7 +9,7 @@
 </div>
 <div>
   <!--食材栄養素一覧-->
-  <table>
+  <table class="table table-bordered table-hover">
     <tr>
       <th>食材名</th>
       <th>タンパク質</th>
@@ -19,48 +19,52 @@
       <th>合計カロリー</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
-    <%# @menu_foods.each do |menu_food| %>
+    <% @menu_foods.each do |menu_food| %>
       <tr>
-        <td><%#= menu_food.food.name %></td>
-        <td><%#= menu_food.food.protain %></td>
-        <td><%#= menu_food.food.fat %></td>
-        <td><%#= menu_food.food.carbon %></td>
-        <td><%#= menu_food.weight %></td>
-        <td>合計値</td>
-        <td><%#= link_to "変更", edit_menu_food_path(menu_food) %></td>
-        <td><%#= link_to "削除", menu_food_path(menu_food), method: :delete %></td>
+        <%= form_with model: menu_food, method: :patch, local: true do |f| %>
+          <td><%= menu_food.food.name %></td>
+          <td><%= menu_food.food.protain %></td>
+          <td><%= menu_food.food.fat %></td>
+          <td><%= menu_food.food.carbon %></td>
+          <td><%#= カロリー計算のメソッドを代入 %></td>
+          <td><%= f.text_field :weight %></td>
+          <td><%= f.submit "変更", class: "btn btn-success" %></td>
+          <td><%= link_to "削除", menu_food_path(menu_food), method: :delete, class: "btn btn-danger" %></td>
+        <% end %>
       </tr>
-    <%# end %>
+    <% end %>
   </table>
 </div>
-<div>
-  <h3>栄養素合計</h3>
-  <table>
-    <tr>
-      <th>タンパク質(g)</th>
-      <th>脂質(g)</th>
-      <th>炭水化物(g)</th>
-      <th>カロリー(kcal)</th>
-    </tr>
-    <tr>
-      <td><%#= @menu.sum_protain %></td>
-      <td><%#= @menu.sum_fat %></td>
-      <td><%#= @menu.sum_carbon %></td>
-      <td><%#= @menu.sum_calory %></td>
-    </tr>
-  </table>
-</div>
-<div>
-  <%= form_with model: @menu, method: :patch, local:true do |f| %>
-    <div>
-      <h2>食事名</h2>
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      <h2>料理画像</h2>
-      <p>料理画像追加フォームを作成する</p>
-    </div>
-    <%= f.submit "保存" %>
-  <% end %>
-</div>
+
+<%= form_with model: @menu, method: :patch, local:true do |f| %>
+  <div>
+    <h3>栄養素合計</h3>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th>タンパク質(g)</th>
+        <th>脂質(g)</th>
+        <th>炭水化物(g)</th>
+        <th>カロリー(kcal)</th>
+      </tr>
+      <tr>
+        <td><%#= @menu.sum_protain %></td>
+        <td><%#= @menu.sum_fat %></td>
+        <td><%#= @menu.sum_carbon %></td>
+        <td><%#= @menu.sum_calory %></td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h2>食事名</h2>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <h2>料理画像</h2>
+    <%= attachment_image_tag @menu, :image, :fill, 200, 200, format: 'jpeg' %>
+    <%= f.attachment_field :image %>
+  </div>
+  <%= f.submit "保存", class: "btn btn-success" %>
+  <%= link_to "削除", menu_path, method: :delete, class: "btn btn-danger" %>
+<% end %>

@@ -7,10 +7,11 @@ class MenuFood < ApplicationRecord
     sum_calory = sum_protain = sum_fat = sum_carbon = 0
   end
 
-
+  # 食材のカロリーを計算するメソッド
+def self.food_calculation
 
   # 新規食事登録時にのトータルカロリー計算のメソッド
-  def self.food_calculation
+  def self.menu_calculation
     sum_calory = (food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4) * menu_food.weight
     calory = sum_calory #カロリーカラムに計算結果を格納
     calory.save #計算値を保存

@@ -18,8 +18,9 @@
         <td><%= food.fat %></td>
         <td><%= food.carbon %></td>
         <td><%= f.text_field :weight %></td>
-        <%= f.hidden_field :food_id, :value => params[:id] %>
-        <%= f.hidden_field :menu_id, :value => menu_id  %>
+        <%= f.hidden_field :food_id, :value => food.id %>
+        <%#= f.hidden_field :menu_id, :value => menu_id  %>
+        <%= f.hidden_field :menu_id, :value => params[:menu_id] %>
         <td><%= f.submit '登録' %></td>
       <% end %>
     </tr>

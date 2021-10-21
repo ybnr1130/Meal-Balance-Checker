@@ -68,3 +68,5 @@ gem 'rubocop-rails', require:false
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'pry-byebug', group: :development
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"

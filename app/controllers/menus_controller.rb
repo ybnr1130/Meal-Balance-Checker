@@ -18,15 +18,12 @@ class MenusController < ApplicationController
 
   def edit
     @menu = Menu.find_by(user_id: current_user.id, id: params[:id])
-    @menu_foods = MenuFood.find_by(params[:id])
-    # 各栄養素の合計値をリセットするメソッドを実行する
-    # 食材から摂取する各栄養素の合計値を算出するメソッドを実行する
-    #
+    @menu_foods = MenuFood.where(menu_id: params[:id])
   end
 
   def show
     @menu = Menu.find_by(user_id: current_user.id, id: params[:id])
-    @menu_foods = MenuFood.find_by(params[:id])
+    @menu_foods = MenuFood.where(menu_id: params[:id])
   end
 
   def update
@@ -38,12 +35,15 @@ class MenusController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    menu = Menu.find(params[:id])
+    menu.destroy
+    redirect_to menus_path
   end
 
   private
   def menu_params
-    params.require(:menu).permit(:name, :user_id, :sum_protain, :sum_fat, :sum_carbon, :sum_calory)
+    params.require(:menu).permit(:name, :user_id, :sum_protain, :sum_fat, :sum_carbon, :sum_calory, :image)
   end
 
 end

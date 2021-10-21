@@ -1,15 +1,14 @@
-<h2>食事一覧</h2>
+<h2>メニュー一覧</h2>
 <div>
   <%= link_to "新規登録", new_menu_path %>
-  <!--link_toでshowページへ移行するようレシピ名から各栄養素まで囲う-->
   <% @menus.each do |menu| %>
     <div>
       <p>レシピ名:<%= menu.name %></p>
-      <p>画像表示</p>
+      <%= attachment_image_tag menu, :image, :fill, 200, 200, format: 'jpeg' %>
       <p>p:<%= menu.sum_protain %> f:<%= menu.sum_fat %> c:<%= menu.sum_carbon %></p>
       <p>総カロリー:<%= menu.sum_calory %></p>
-      <%= link_to "詳細", menu_path(menu) %>
-      <%= link_to "編集", edit_menu_path(menu) %>
+      <%= link_to "詳細", menu_path(menu), class: "btn btn-primary" %>
+      <%= link_to "編集", edit_menu_path(menu), class: "btn btn-success" %>
     </div>
   <% end %>
 </div>

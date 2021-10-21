@@ -11,10 +11,26 @@ class MenuFoodsController < ApplicationController
     @records = Food.food_serch_for(params[:content])
     # ↑renderにより画面バック時に再検索するための記述
     if @menu_food.save
-      redirect_to edit_menu_path
+      redirect_to edit_menu_path(@menu_food.menu_id)
     else
-      render "searchs/search_food"
+      render :new
     end
+  end
+
+  def update
+    @menu_food = MenuFood.find(params[:id])
+    p = @menu_food.id
+    if @menu_food.update(menu_food_params)
+      redirect_to edit_menu_path(@menu_food.menu_id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    menu_food = MenuFood.find(params[:id])
+    menu_food.destroy
+    redirect_to edit_menu_path(menu_food.menu_id)
   end
 
   private

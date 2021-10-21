@@ -16,12 +16,11 @@
     <% @menu_foods.each do |menu_food| %>
       <tr>
         <td><%= menu_food.food.name %></td>
-        <td><%= menu_food.food.protain %></td>
+        <td><%= menu_food.food.protain %></br><%=  %></td>
         <td><%= menu_food.food.fat %></td>
         <td><%= menu_food.food.carbon %></td>
         <td><%= menu_food.weight %></td>
-        <td><%#= @food_calory = (food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4) *menu_food.weight %></td>
-        <!--食材から摂取する各栄養素の合計値を算出する-->
+        <td><%= menu_food.food.food_calory_calculation(menu_food.weight) %></td>
       </tr>
     <% end %>
   </table>
@@ -35,10 +34,10 @@
         <th>カロリー(kcal)</th>
       </tr>
       <tr>
-        <td><%= @menu.sum_protain %></td>
-        <td><%= @menu.sum_fat %></td>
-        <td><%= @menu.sum_carbon %></td>
-        <td><%= @menu.sum_calory %></td>
+        <td><%= @menu.foods.sum(:protain).to_f.round(2) %></td>
+        <td><%= @menu.fat_calculation %></td>
+        <td><%= @menu.foods.sum(:carbon).to_f.round(2) %></td>
+        <td><%= @menu.calory_calculation %></td>
       </tr>
     </table>
 <%= link_to "編集", edit_menu_path, class: "btn btn-success" %>

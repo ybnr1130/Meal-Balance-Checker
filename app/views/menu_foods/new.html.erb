@@ -1,7 +1,7 @@
 <h2>候補</h2>
 
 <p>※表示値は全て100g当たりの成分値となります</p>
-<table>
+<table class="table table-bordered table-hover">
   <tr>
     <th>名前</th>
     <th>タンパク質</th>
@@ -19,9 +19,8 @@
         <td><%= food.carbon %></td>
         <td><%= f.text_field :weight %></td>
         <%= f.hidden_field :food_id, :value => food.id %>
-        <%#= f.hidden_field :menu_id, :value => menu_id  %>
         <%= f.hidden_field :menu_id, :value => params[:menu_id] %>
-        <td><%= f.submit '登録' %></td>
+        <td><%= f.submit '登録', class: "btn btn-success" %></td>
       <% end %>
     </tr>
   <% end %>

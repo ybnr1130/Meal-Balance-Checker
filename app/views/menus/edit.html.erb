@@ -15,9 +15,8 @@
       <th>タンパク質</th>
       <th>脂質</th>
       <th>炭水化物</th>
-      <th>人前</th>
       <th>合計カロリー</th>
-      <th></th>
+      <th>人前</th>
       <th></th>
       <th></th>
     </tr>
@@ -25,10 +24,10 @@
       <tr>
         <%= form_with model: menu_food, method: :patch, local: true do |f| %>
           <td><%= menu_food.food.name %></td>
-          <td><%= menu_food.food.protain %></td>
-          <td><%= menu_food.food.fat %></td>
-          <td><%= menu_food.food.carbon %></td>
-          <td><%#= カロリー計算のメソッドを代入 %></td>
+          <td><%= menu_food.food.food_protain_calculation(menu_food.weight) %></td>
+          <td><%= menu_food.food.food_fat_calculation(menu_food.weight) %></td>
+          <td><%= menu_food.food.food_carbon_calculation(menu_food.weight) %></td>
+          <td><%= menu_food.food.food_calory_calculation(menu_food.weight)  %></td>
           <td><%= f.text_field :weight %></td>
           <td><%= f.submit "変更", class: "btn btn-success" %></td>
           <td><%= link_to "削除", menu_food_path(menu_food), method: :delete, class: "btn btn-danger" %></td>
@@ -49,10 +48,10 @@
         <th>カロリー(kcal)</th>
       </tr>
       <tr>
-        <td><%#= @menu.sum_protain %></td>
-        <td><%#= @menu.sum_fat %></td>
-        <td><%#= @menu.sum_carbon %></td>
-        <td><%#= @menu.sum_calory %></td>
+        <td><%= @menu.protain_calculation %></td>
+        <td><%= @menu.fat_calculation %></td>
+        <td><%= @menu.carbon_calculation %></td>
+        <td><%= @menu.calory_calculation %></td>
       </tr>
     </table>
   </div>

@@ -1,0 +1,19 @@
+
+<h2>検索結果</h2>
+<p>※表示値は全て100g当たりの成分値となります</p>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>名前</th>
+    <th>タンパク質</th>
+    <th>脂質</th>
+    <th>炭水化物</th>
+  </tr>
+  <% @records.each do |food| %>
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= food.protain %></td>
+      <td><%= food.fat %></td>
+      <td><%= food.carbon %></td>
+    </tr>
+  <% end %>
+</table>

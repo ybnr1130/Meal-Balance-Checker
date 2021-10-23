@@ -1,0 +1,12 @@
+<h2>お問合せ・要望フォーム</h2>
+<%= form_with model: @contact, url: send_user_contacts_path, local: true do |f| %>
+  <p>・どちらの内容を入力しますか？</p>
+  <%= f.radio_button :object, '0' %>
+  <%= f.label :object, "お問合せ" %>
+  <%= f.radio_button :object, '1' %>
+  <%= f.label :object, "要望" %>
+  <p>・詳細を下記フォームにご入力ください。</p>
+  <%= f.text_area :body, size: "80x10" %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.submit "送信" %>
+<% end %>

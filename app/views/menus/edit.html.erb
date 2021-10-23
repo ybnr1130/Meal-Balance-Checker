@@ -1,2 +1,69 @@
-<h1>Menus#edit</h1>
-<p>Find me in app/views/menus/edit.html.erb</p>
+<h2>食材登録</h2>
+<div>
+  <!--食材検索-->
+  <%= form_with model: @menu_food, url:new_menu_food_path, method: :get, local:true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :menu_id, :value => params[:id] %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+<div>
+  <!--食材栄養素一覧-->
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>食材名</th>
+      <th>タンパク質</th>
+      <th>脂質</th>
+      <th>炭水化物</th>
+      <th>合計カロリー</th>
+      <th>人前</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @menu_foods.each do |menu_food| %>
+      <tr>
+        <%= form_with model: menu_food, method: :patch, local: true do |f| %>
+          <td><%= menu_food.food.name %></td>
+          <td><%= menu_food.food.food_protain_calculation(menu_food.weight) %></td>
+          <td><%= menu_food.food.food_fat_calculation(menu_food.weight) %></td>
+          <td><%= menu_food.food.food_carbon_calculation(menu_food.weight) %></td>
+          <td><%= menu_food.food.food_calory_calculation(menu_food.weight)  %></td>
+          <td><%= f.text_field :weight %></td>
+          <td><%= f.submit "変更", class: "btn btn-success" %></td>
+          <td><%= link_to "削除", menu_food_path(menu_food), method: :delete, class: "btn btn-danger" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= form_with model: @menu, method: :patch, local:true do |f| %>
+  <div>
+    <h3>栄養素合計</h3>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th>タンパク質(g)</th>
+        <th>脂質(g)</th>
+        <th>炭水化物(g)</th>
+        <th>カロリー(kcal)</th>
+      </tr>
+      <tr>
+        <td><%= @menu.protain_calculation %></td>
+        <td><%= @menu.fat_calculation %></td>
+        <td><%= @menu.carbon_calculation %></td>
+        <td><%= @menu.calory_calculation %></td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h2>食事名</h2>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <h2>料理画像</h2>
+    <%= attachment_image_tag @menu, :image, :fill, 200, 200, format: 'jpeg' %>
+    <%= f.attachment_field :image %>
+  </div>
+  <%= f.submit "保存", class: "btn btn-success" %>
+  <%= link_to "削除", menu_path, method: :delete, class: "btn btn-danger" %>
+<% end %>

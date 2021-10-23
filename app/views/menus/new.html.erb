@@ -1,58 +1,10 @@
-<%= form_with model:@menu %>
-  <h2>食材登録</h2>
-  <h3>食材を追加</h3>
-  <!--食材検索欄-->
-  <%= form_with url:search_food_path, local:true do |f| %>
-    <%= f.text_field :content %>
-    <%= f.submit "検索" %>
-  <% end %>
-  <!--食材栄養素一覧-->
-  <% foods.each do |food| %>
-  <table>
-    <tr>
-      <th>食材名</th>
-      <th>タンパク質</th>
-      <th>脂質</th>
-      <th>炭水化物</th>
-      <th>人前</th>
-      <th>合計カロリー</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <td><%= food.name %></td>
-      <td><%= food.protain %></td>
-      <td><%= food.fat %></td>
-      <td><%= food.carbon %></td>
-      <td><%#= %></td>
-      <td><%= food_sum == food.protain.to_i*4 + food.fat.to_i*9 + food.carbon.to_i*4 %></td>
-      <td>変更</td>
-      <td>削除</td>
-    </tr>
-  </table>
-  <% end %>
-  <h3><%= link_to "食材を追加"  %></h3>
-  <%= form_with url:search_recipe_path, local:true do |f| %>
-    <p>追加したい食材を入力してください</p>
-    <%= f.text_area :content %>
-  <%= f.submit "検索" %>
-  <h3>栄養素合計</h3>
-  <table>
-    <tr>
-      <th>タンパク質</th>
-      <th>脂質</th>
-      <th>炭水化物</th>
-      <th>合計カロリー</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-  <h3>カテゴリー</h3>
-  <!--朝食、昼食、夕食、間食一覧をプルダウンで表示する-->
-
-  <%= f.submit "保存" %>
+<h2>レシピ登録</h2>
+<h3>レシピ名</h3>
+<%= form_with model: @menu, url: menus_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name %>
+  <h3>料理画像</h3>
+  <%= f.attachment_field :image %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>食材追加はレシピ登録後、レシピ編集画面より行えます。</p>
+  <%= f.submit "登録" %>
 <% end %>

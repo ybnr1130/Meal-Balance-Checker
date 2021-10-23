@@ -1,11 +1,15 @@
 class SearchsController < ApplicationController
   def search_food
-    @content = params[:content]
-    @records = Food.where('name LIKE ?', '%'+content+'&')
+    @records = Food.food_serch_for(params[:content])
+    @menu_food = MenuFood.new
   end
-  
-  def search_recipe
-    @content = params[:content]
-    @records = Recipe.where('name LIKE ?', '%'+content+'&')
+
+  def keyword
+
   end
+
+  def search_result
+    @records = Food.food_serch_for(params[:content])
+  end
+
 end

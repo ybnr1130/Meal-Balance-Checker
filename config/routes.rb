@@ -1,29 +1,38 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
+
   devise_for :users
 
   # resourcesを使用したルーティング
-  resources :menus, except: [:show]
-  resources :recipes
-  resources :recipe_foods, only: [:new, :create]
-  resources :foods, only: [:create]
-  resources :settings, only: [:index, :edit, :update]
+  resources :menus
+  resources :menu_foods, only: [:new, :create, :edit, :update, :destroy]
+  resources :users, only: [:show, :create, :edit, :update, :index]
 
-  # settingsコントローラーのルーティング
-  get 'settings/:id/delete' => 'settings#delete', as: 'setting_delete'
-  delete 'settings/:id' => 'settings#deleted', as: 'setting_deleted'
-  get 'settings/contact/:id' => 'settings#contact', as: 'contact'
-  post 'settings/contact' => 'settings#send', as: 'send'
+  # usersコントローラーの編集画面関連のルーティング
+  get 'users/:id/settings' => 'users#setting', as: 'user_setting'
+  get 'users/:id/delete' => 'users#delete', as: 'user_delete'
+  patch 'users/:id' => 'users#deleted', as: 'user_deleted'
+
+  # contactコントローラのルーティング
+  resources :contacts, only: [:new] do
+    collection do
+      post 'send_user' => 'contacts#send_user'
+      get 'sent_user' => 'contacts#sent_user'
+    end
+    member do
+      get 'detail'
+    end
+  end
+  #get 'contacts/:id' => 'contacts#contact', as: 'contact'
+  #post 'contacts/contact' => 'contacts#send_user', as: 'send'
+  #get 'contacts/sent' => 'contacts#sent_user', as: 'sent'
 
   # searchsコントローラーのルーティング
   get 'search/food' => 'searchs#search_food', as: 'search_food'
-  get 'search/recipe' => 'searchs#search_recipe', as: 'search_recipe'
+  get 'search/keyword' => 'searchs#keyword', as: 'keyword'
+  get 'search/search_result' => 'searchs#search_result', as: 'search_result'
 
-  # customersコントローラーのルーティング
-  get 'customers/new' => 'customers#new', as: 'customers_info'
-  post 'customers' => 'customers#create', as: 'customer'
-
-  #CSVインポート用のルーティング
+  #CSVインポート用のfoodsコントローラーのルーティング
   post 'import' => 'foods#import', as: 'import_foods'
   get 'import' => 'foods#data', as: 'import'
 end

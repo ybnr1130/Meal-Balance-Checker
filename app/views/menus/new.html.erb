@@ -1,0 +1,10 @@
+<h2>レシピ登録</h2>
+<h3>レシピ名</h3>
+<%= form_with model: @menu, url: menus_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name %>
+  <h3>料理画像</h3>
+  <%= f.attachment_field :image %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>食材追加はレシピ登録後、レシピ編集画面より行えます。</p>
+  <%= f.submit "登録" %>
+<% end %>

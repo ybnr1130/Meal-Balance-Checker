@@ -1,0 +1,44 @@
+<h2>レシピ名</h2>
+<%= @menu.name %>
+
+<h2>料理画像</h2>
+<%= attachment_image_tag @menu, :image, :fill, 200, 200, format: 'jpeg' %>
+<h2>食材一覧</h2>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>食材名</th>
+      <th>タンパク質</th>
+      <th>脂質</th>
+      <th>炭水化物</th>
+      <th>人前</th>
+      <th>合計カロリー</th>
+    </tr>
+    <% @menu_foods.each do |menu_food| %>
+      <tr>
+        <td><%= menu_food.food.name %></td>
+        <td><%= menu_food.food.protain %></br><%=  %></td>
+        <td><%= menu_food.food.fat %></td>
+        <td><%= menu_food.food.carbon %></td>
+        <td><%= menu_food.weight %></td>
+        <td><%= menu_food.food.food_calory_calculation(menu_food.weight) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+    <h3>栄養素合計</h3>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th>タンパク質(g)</th>
+        <th>脂質(g)</th>
+        <th>炭水化物(g)</th>
+        <th>カロリー(kcal)</th>
+      </tr>
+      <tr>
+        <td><%= @menu.foods.sum(:protain).to_f.round(2) %></td>
+        <td><%= @menu.fat_calculation %></td>
+        <td><%= @menu.foods.sum(:carbon).to_f.round(2) %></td>
+        <td><%= @menu.calory_calculation %></td>
+      </tr>
+    </table>
+<%= link_to "編集", edit_menu_path, class: "btn btn-success" %>
+<%= link_to "削除", menu_path, method: :delete, class: "btn btn-danger" %>

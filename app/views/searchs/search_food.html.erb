@@ -1,0 +1,26 @@
+<h2>候補</h2>
+
+<p>※表示値は全て100g当たりの成分値となります</p>
+<table>
+  <tr>
+    <th>名前</th>
+    <th>タンパク質</th>
+    <th>脂質</th>
+    <th>炭水化物</th>
+    <th>摂取量</th>
+    <th></th>
+  </tr>
+  <% @records.each do |food| %>
+    <tr>
+      <%= form_with model: @menu_food, url: menu_foods_path, local: true do |f| %>
+        <td><%= food.name %></td>
+        <td><%= food.protain %></td>
+        <td><%= food.fat %></td>
+        <td><%= food.carbon %></td>
+        <td><%= f.text_field :weight %></td>
+        <%= f.hidden_field :food_id, :value => food.id %>
+        <td><%= f.submit '登録' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -4,7 +4,7 @@ class FoodsController < ApplicationController
 
   def import
     Food.import(params[:file])
-    redirect_to root_url
+    redirect_to menus_path(current_user)
   end
 
   def data

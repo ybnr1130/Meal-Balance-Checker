@@ -23,6 +23,7 @@
               <% if user_signed_in? %>
                 <li class="nav-item"><%= link_to 'バランスチェック', menus_path %></li>
                 <li class="nav-item"><%= link_to '検索', keyword_path %></li>
+                <li class="nav-item"><%= link_to '食材追加', import_path %></li>
                 <li class="nav-item"><%= link_to '設定', user_setting_path(current_user.id) %></li>
                 <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
               <% else %>

@@ -1,4 +1,12 @@
-<%= form_with url: import_foods_path do |f| %>
-  <%= f.file_field :file, accept: '.csv' %>
-  <%= f.submit "アップロード" %>
-<% end %>
+<div class="food-contents">
+  <div class="food-contents-top">
+    <h2>食材追加</h2>
+  </div>
+  <div class="food-contents-container">
+    <p>↓CSVファイルからの食材追加はこちら↓</p>
+    <%= form_with url: import_foods_path do |f| %>
+      <%= f.file_field :file, accept: '.csv' %></br></br>
+      <%= f.submit "アップロード", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

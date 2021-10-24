@@ -1,4 +1,10 @@
-<h2>設定項目</h2>
-<%= link_to "〜アカウント情報設定〜", user_path, class: "btn btn-success" %>
-<%= link_to "〜退会手続き〜", user_delete_path, class: "btn btn-danger" %>
-<%= link_to "〜お問合せ・要望フォーム〜", new_contact_path, class: "btn btn-info" %>
+<div class="setting-contents">
+  <div class="setting-contants-top">
+    <h2>設定項目</h2>
+  </div>
+  <div class="setting-contents-container">
+    <%= link_to "〜アカウント情報設定〜", user_path, class: "btn btn-success setting-form" %>
+    <%= link_to "〜退会手続き〜", user_delete_path, class: "btn btn-danger setting-form" %>
+    <%= link_to "〜お問合せ・要望フォーム〜", new_contact_path, class: "btn btn-info setting-form" %>
+  </div>
+</div>

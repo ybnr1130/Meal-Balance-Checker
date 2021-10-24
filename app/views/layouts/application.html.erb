@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Checker</title>
+    <title>Meal Balance Checker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,19 +10,36 @@
   </head>
 
   <body>
-    <a href="/"><span>Meal balance checker</span></a>
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to 'バランスチェック', menus_path %></li>
-        <li><%= link_to '検索', keyword_path %></li>
-        <li><%= link_to '設定', user_setting_path(current_user.id) %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to '新規登録', new_user_registration_path %></li>
-        <li><%#= link_to 'ログイン', new_user_session_path %></li>
-      <% end %>
-    </ul>
-    <%= yield %>
+    <div class="footer-fixed">
+      <div class="header">
+        <nav class="nav-bar">
+          <div class="col-3 logo-image">
+            <%= link_to root_path, class:"header-title" do %>
+              <%= image_tag 'logo.jpg', size:'80x60' %>
+            <% end %>
+          </div>
+          <div class="col-9 header-text">
+            <ul class="lists-right ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item"><%= link_to 'バランスチェック', menus_path %></li>
+                <li class="nav-item"><%= link_to '検索', keyword_path %></li>
+                <li class="nav-item"><%= link_to '設定', user_setting_path(current_user.id) %></li>
+                <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li class="nav-item"><%= link_to '新規登録', new_user_registration_path %></li>
+                <li class="nav-item"><%= link_to 'ログイン', new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+      </div>
 
+      <%= yield %>
+      <div class="footer">
+        <!--<div class="footer-container">-->
+          <p> ©︎2021 Meal Balance Checker, Inc.</p>
+        <!--</div>-->
+      </div>
+    </div>
   </body>
 </html>

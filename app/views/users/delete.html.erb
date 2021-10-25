@@ -1,7 +1,21 @@
-<h2>退会手続き</h2>
-<p>退会を希望されますか？</p>
-<p>退会手続きをされますと全てのサービスとご利用になられた情報全てが削除されます。</p>
-<p>再度ご利用いただく際には新規登録が必要です。</p>
-<p>本当に退会されますか？</p>
-<%= link_to "退会する", user_deleted_path, method: :patch, data: {confilm: "本当に退会しますか？"} %>
-<%= link_to "退会しない", user_setting_path %>
+<div class="user-delete">
+  <div class="user-delete-contents">
+    <h2>退会手続き</h2>
+  </div>
+  <div class="user-delete-container">
+    <div class="user-delete-text">
+      <p>
+        退会を希望されますか？</br></br>
+
+        退会手続きをされますと全てのサービスとご利用になられた情報全てが削除されます。</br>
+        再度ご利用いただく際には新規登録が必要です。</br></br>
+
+        本当に退会されますか？
+      </p>
+    </div>
+    <div class="user-delete-btn">
+      <%= link_to "退会する", user_deleted_path, method: :patch, data: {confilm: "本当に退会しますか？"}, class: "btn btn-danger" %>
+      <%= link_to "退会しない", user_setting_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

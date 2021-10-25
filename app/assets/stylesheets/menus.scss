@@ -1,3 +1,114 @@
 // Place all the styles related to the menus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.menu {
+  // margin: 20px 20px;
+  width: 100%;
+
+  .menu-contents {
+    margin: 20px 20px;
+    width: 100%;
+  }
+
+  .menu-containers {
+    margin: 20px 20px;
+    width: 100%;
+    display: block;
+
+    .menu-container-link {
+      width: 100%;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .menu-container {
+      margin: 20px 0px 40px 0px;
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      .menu-container-item {
+        width: 350px;
+        height: 520px;
+        display: inline-block;
+        margin: 5px;
+        border: solid 1px;
+        border-style: ridge;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.menu-new-container {
+  margin: 20px 20px;
+}
+
+.menu-show {
+  margin: 20px 20px 40px 20px;
+  width: 100%;
+
+  .menu-show-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .menu-show-table {
+    width: 90%;
+    margin: 0px auto;
+  }
+
+  .menu-show-table-data {
+    width: 25%;
+    // text-align: center;
+  }
+
+  .menu-show-table-data2 {
+    width: 15%;
+    text-align: center;
+  }
+
+  .menu-show-table-sum {
+    width: 25%;
+    text-align: center;
+  }
+}
+
+.menu-edit {
+  margin: 20px 20px 40px 20px;
+  width: 100%;
+
+  .menu-search {
+    margin: 20px 0px;
+  }
+  .menu-edit-table {
+    width: 90%;
+    margin: 20px auto;
+    font-size: 14px;
+  }
+
+  .menu-edit-table-data {
+    width: 22%;
+    text-align: center;
+  }
+
+  .menu-edit-table-data2 {
+    width: 12%;
+    text-align: center;
+  }
+  .menu-edit-table-data3 {
+    width: 10%;
+    text-align: center;
+  }
+
+  .menu-edit-table-sum {
+    width: 25%;
+    text-align: center;
+  }
+  .menu-edit-image {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0px 40px 0px;
+  }
+}

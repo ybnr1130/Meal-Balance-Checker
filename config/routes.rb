@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   # resourcesを使用したルーティング
   resources :menus
   resources :menu_foods, only: [:new, :create, :edit, :update, :destroy]
-  resources :users, only: [:show, :create, :edit, :update, :index]
+  resources :users, only: [:show, :create, :edit, :update, :index, :destroy]
 
   # usersコントローラーの編集画面関連のルーティング
   get 'users/:id/settings' => 'users#setting', as: 'user_setting'
   get 'users/:id/delete' => 'users#delete', as: 'user_delete'
-  patch 'users/:id' => 'users#deleted', as: 'user_deleted'
 
   # contactコントローラのルーティング
   resources :contacts, only: [:new] do
@@ -22,9 +21,6 @@ Rails.application.routes.draw do
       get 'detail'
     end
   end
-  #get 'contacts/:id' => 'contacts#contact', as: 'contact'
-  #post 'contacts/contact' => 'contacts#send_user', as: 'send'
-  #get 'contacts/sent' => 'contacts#sent_user', as: 'sent'
 
   # searchsコントローラーのルーティング
   get 'search/food' => 'searchs#search_food', as: 'search_food'

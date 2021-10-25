@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
-  def deleted
+  def destroy
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session

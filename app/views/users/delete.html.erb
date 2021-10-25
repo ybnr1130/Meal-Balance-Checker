@@ -14,7 +14,7 @@
       </p>
     </div>
     <div class="user-delete-btn">
-      <%= link_to "退会する", user_deleted_path, method: :patch, data: {confilm: "本当に退会しますか？"}, class: "btn btn-danger" %>
+      <%= link_to "退会する", user_path, method: :delete, data: {confilm: "本当に退会しますか？"}, class: "btn btn-danger" %>
       <%= link_to "退会しない", user_setting_path, class: "btn btn-primary" %>
     </div>
   </div>

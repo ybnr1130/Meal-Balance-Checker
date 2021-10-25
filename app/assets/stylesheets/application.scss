@@ -120,6 +120,12 @@
   .top-demo {
     text-align: center;
     width: 100%;
+    margin: 10px 0px;
+  }
+
+  .top-signup {
+    text-align: center;
+    width: 100%;
     margin: 50px 0px;
   }
 
@@ -128,4 +134,36 @@
     width: 100%;
     margin: 50px 0px;
   }
+}
+
+.search-food {
+  margin: 20px 20px 60px 20px;
+  width: 100%;
+
+  .search-food-table {
+    width: 90%;
+    margin: 20px auto;
+  }
+  .search-food-head {
+    width: 45%;
+    text-align: center;
+  }
+
+    .search-food-head2 {
+    width: 15%;
+    text-align: center;
+  }
+
+    .search-food-head3 {
+    width: 5%;
+    text-align: center;
+  }
+
+   .search-food-data {
+     text-align: center;
+   }
+}
+
+.meal-devise {
+  margin: 20px 20px 60px 20px;
 }

@@ -8,5 +8,9 @@
       <%= f.file_field :file, accept: '.csv' %></br></br>
       <%= f.submit "アップロード", class: "btn btn-success" %>
     <% end %>
+    <div class="csv-demo">
+      <p>CSVデータを追加する際は1行目を下図の通り作成してください</p>
+      <%= image_tag 'csv-demo.jpg', size: '770x420' %>
+    </div>
   </div>
 </div>

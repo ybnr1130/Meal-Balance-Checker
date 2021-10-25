@@ -1,14 +1,22 @@
-<h2>メニュー一覧</h2>
-<div>
-  <%= link_to "新規登録", new_menu_path, class: "btn btn-warning" %>
-  <% @menus.each do |menu| %>
-    <div>
-      <p>レシピ名:<%= menu.name %></p>
-      <%= attachment_image_tag menu, :image, :fill, 200, 200, format: 'jpeg' %>
-      <p>p:<%= menu.protain_calculation %> / f:<%= menu.fat_calculation %> / c:<%= menu.carbon_calculation %></p>
-      <p>総カロリー:<%= menu.calory_calculation %></p>
-      <%= link_to "詳細", menu_path(menu), class: "btn btn-primary" %>
-      <%= link_to "編集", edit_menu_path(menu), class: "btn btn-success" %>
+<div class="menu">
+  <div class="menu-contents">
+    <h2>メニュー一覧</h2>
+  </div>
+  <div class="menu-containers">
+    <div class="menu-container-link">
+      <%= link_to "新規登録", new_menu_path, class: "btn btn-warning" %>
     </div>
-  <% end %>
+    <div class="menu-container">
+      <% @menus.each do |menu| %>
+        <div class="menu-container-item">
+          <%= attachment_image_tag menu, :image, :fill, 200, 200, format: 'jpeg' %>
+          <p>レシピ名:<%= menu.name %></p>
+          <p>p:<%= menu.protain_calculation %> [g] / f:<%= menu.fat_calculation %> [g] / c:<%= menu.carbon_calculation %> [g]</p>
+          <p>総カロリー:<%= menu.calory_calculation %></p>
+          <%= link_to "詳細", menu_path(menu), class: "btn btn-primary" %>
+          <%= link_to "編集", edit_menu_path(menu), class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

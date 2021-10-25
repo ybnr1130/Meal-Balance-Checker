@@ -1,19 +1,22 @@
-
-<h2>検索結果</h2>
-<p>※表示値は全て100g当たりの成分値となります</p>
-<table class="table table-bordered table-hover">
-  <tr>
-    <th>名前</th>
-    <th>タンパク質</th>
-    <th>脂質</th>
-    <th>炭水化物</th>
-  </tr>
-  <% @records.each do |food| %>
-    <tr>
-      <td><%= food.name %></td>
-      <td><%= food.protain %></td>
-      <td><%= food.fat %></td>
-      <td><%= food.carbon %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="search-food">
+  <h2>検索結果</h2>
+  <p>※表示値は全て100g当たりの成分値となります</p>
+  <div class="search-food-table">
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th class="search-food-head">食材名</th>
+        <th class="search-food-head2">タンパク質 [g]</th>
+        <th class="search-food-head2">脂質 [g]</th>
+        <th class="search-food-head2">炭水化物 [g]</th>
+      </tr>
+      <% @records.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td class="search-food-data"><%= food.protain %></td>
+          <td class="search-food-data"><%= food.fat %></td>
+          <td class="search-food-data"><%= food.carbon %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

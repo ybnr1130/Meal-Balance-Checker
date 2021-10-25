@@ -1,27 +1,31 @@
-<h2>候補</h2>
-
-<p>※表示値は全て100g当たりの成分値となります</p>
+<!--search_food,html,erbより転載。記述はparams:[menu_id]の行の有無-->
+<div class="search-food">
+<h2>検索結果</h2>
+<p>※表示値は全て100g当たりの値となります</p>
+<div class="search-food-table">
 <table class="table table-bordered table-hover">
   <tr>
-    <th>名前</th>
-    <th>タンパク質</th>
-    <th>脂質</th>
-    <th>炭水化物</th>
-    <th>摂取量</th>
-    <th></th>
+    <th class="search-food-head">食材名</th>
+    <th class="search-food-head2">タンパク質 [g]</th>
+    <th class="search-food-head2">脂質 [g]</th>
+    <th class="search-food-head2">炭水化物 [g]</th>
+    <th class="search-food-head3">人前</th>
+    <th class="search-food-head3"></th>
   </tr>
   <% @records.each do |food| %>
     <tr>
       <%= form_with model: @menu_food, url: menu_foods_path, local: true do |f| %>
         <td><%= food.name %></td>
-        <td><%= food.protain %></td>
-        <td><%= food.fat %></td>
-        <td><%= food.carbon %></td>
-        <td><%= f.text_field :weight %></td>
+        <td class="search-food-data"><%= food.protain %></td>
+        <td class="search-food-data"><%= food.fat %></td>
+        <td class="search-food-data"><%= food.carbon %></td>
+        <td class="search-food-data"><%= f.text_field :weight, :size => "5" %></td>
         <%= f.hidden_field :food_id, :value => food.id %>
         <%= f.hidden_field :menu_id, :value => params[:menu_id] %>
-        <td><%= f.submit '登録', class: "btn btn-success" %></td>
+        <td class="search-food-data"><%= f.submit '登録', class: "btn btn-success" %></td>
       <% end %>
     </tr>
   <% end %>
 </table>
+</div>
+</div>

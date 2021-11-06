@@ -4,6 +4,7 @@
     <!--食材検索-->
     <%= form_with model: @menu_food, url:new_menu_food_path, method: :get, local:true do |f| %>
       <p>
+        検索したい食材を<strong>"ひらがな"</strong>で入力してください。</br>
         食材検索 : <%= f.text_field :content %>
         <%= f.hidden_field :menu_id, :value => params[:id] %>
         <%= f.submit "検索", class: "btn btn-primary" %>
@@ -24,17 +25,8 @@
         <th class="menu-edit-table-data3"></th>
       </tr>
       <% @menu_foods.each do |menu_food| %>
-        <tr>
-          <%= form_with model: menu_food, method: :patch, local: true do |f| %>
-            <td class="menu-edit-table-data"><%= menu_food.food.name %></td>
-            <td class="menu-edit-table-data2"><%= menu_food.food.food_protain_calculation(menu_food.weight) %></td>
-            <td class="menu-edit-table-data2"><%= menu_food.food.food_fat_calculation(menu_food.weight) %></td>
-            <td class="menu-edit-table-data2"><%= menu_food.food.food_carbon_calculation(menu_food.weight) %></td>
-            <td class="menu-edit-table-data2"><%= menu_food.food.food_calory_calculation(menu_food.weight)  %></td>
-            <td class="menu-edit-table-data3"><%= f.text_field :weight, :size => "5" %></td>
-            <td class="menu-edit-table-data3"><%= f.submit "変更", class: "btn btn-success" %></td>
-            <td class="menu-edit-table-data3"><%= link_to "削除", menu_food_path(menu_food), method: :delete, class: "btn btn-danger" %></td>
-          <% end %>
+        <tr id="menu_food_<%= menu_food.id %>">
+          <%= render 'menus/update-btn', menu_food: menu_food %>
         </tr>
       <% end %>
     </table>

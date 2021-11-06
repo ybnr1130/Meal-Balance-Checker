@@ -29,7 +29,8 @@ class MenusController < ApplicationController
   def update
     @menu = Menu.find_by(user_id: current_user.id, id: params[:id])
     if @menu.update(menu_params)
-      redirect_to menu_path(params[:id])
+      @menu_foods = MenuFood.where(menu_id: params[:id])
+      # redirect_to menu_path(params[:id])
     else
       render :edit
     end
@@ -38,7 +39,7 @@ class MenusController < ApplicationController
   def destroy
     menu = Menu.find(params[:id])
     menu.destroy
-    redirect_to menus_path
+    # redirect_to menus_path
   end
 
   private

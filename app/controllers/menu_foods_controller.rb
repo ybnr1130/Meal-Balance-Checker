@@ -21,7 +21,7 @@ class MenuFoodsController < ApplicationController
     @menu_food = MenuFood.find(params[:id])
     p = @menu_food.id
     if @menu_food.update(menu_food_params)
-      redirect_to edit_menu_path(@menu_food.menu_id)
+      # redirect_to edit_menu_path(@menu_food.menu_id)
     else
       render :edit
     end

@@ -3,7 +3,7 @@
     <h2>食材追加</h2>
   </div>
   <div class="food-contents-container">
-    <p>↓CSVファイルからの食材追加はこちら↓</p>
+    <p>↓CSVファイルからの食材追加はこちら↓</br>※デフォルトで2192種類の食材データが登録されております</p>
     <%= form_with url: import_foods_path do |f| %>
       <%= f.file_field :file, accept: '.csv' %></br></br>
       <%= f.submit "アップロード", class: "btn btn-success" %>

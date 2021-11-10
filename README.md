@@ -32,7 +32,5 @@ https://docs.google.com/spreadsheets/d/1JLTbYOdlPlcvrhfIFe-QPoISLJ3HoDHt77I2X9yG
 - なし
 
 ## 将来実装したい機能
-- 飲食店用のアカウント登録およびレシピ登録機能
 - スマホ、タブレットブラウザへの対応
-- QRコード読み込みで飲食店が登録したレシピ一覧へ移行する機能
 

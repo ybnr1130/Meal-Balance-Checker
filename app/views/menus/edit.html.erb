@@ -27,6 +27,7 @@
       <% @menu_foods.each do |menu_food| %>
         <tr id="menu_food_<%= menu_food.id %>">
           <%= render 'menus/update-btn', menu_food: menu_food %>
+          <%#= render 'menus/delete-btn', menu_food: menu_food %>
         </tr>
       <% end %>
     </table>

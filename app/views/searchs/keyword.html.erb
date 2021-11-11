@@ -1,6 +1,6 @@
 <div class="search">
 <h2>食材検索</h2>
-<p>検索したい食材を入力してください</p>
+<p>検索したい食材を<strong>"ひらがな"</strong>で入力してください</p>
 <%= form_with url: search_result_path, method: :get, local: true do |f| %>
   <%= f.text_field :content %>
   <%= f.submit "検索", class: "btn btn-secondary" %>

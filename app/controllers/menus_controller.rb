@@ -29,6 +29,7 @@ class MenusController < ApplicationController
   def update
     @menu = Menu.find_by(user_id: current_user.id, id: params[:id])
     if @menu.update(menu_params)
+      @menu_foods = MenuFood.where(menu_id: params[:id])
       redirect_to menu_path(params[:id])
     else
       render :edit

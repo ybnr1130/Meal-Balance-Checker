@@ -1,0 +1,11 @@
+<td class="menu-edit-table-data"><%= menu_food.food.name %></td>
+<td class="menu-edit-table-data2"><%= menu_food.food.food_protain_calculation(menu_food.weight) %></td>
+<td class="menu-edit-table-data2"><%= menu_food.food.food_fat_calculation(menu_food.weight) %></td>
+<td class="menu-edit-table-data2"><%= menu_food.food.food_carbon_calculation(menu_food.weight) %></td>
+<td class="menu-edit-table-data2"><%= menu_food.food.food_calory_calculation(menu_food.weight) %></td>
+<%= form_with model: menu_food, method: :patch, remote: true, id: "menu_food_form_#{menu_food.id}" do |f| %>
+  <input value="patch" form="<%= "menu_food_form_#{menu_food.id}" %>" type="hidden" name="_method">
+  <td class="menu-edit-table-data3"><%= f.text_field :weight, :size => "5", form: "menu_food_form_#{menu_food.id}" %></td>
+  <td class="menu-edit-table-data3"><%= f.submit "変更", class: "btn btn-success", form: "menu_food_form_#{menu_food.id}" %></td>
+<% end %>
+<td class="menu-edit-table-data3"><%= link_to "削除", menu_food_path(menu_food), method: :delete, class: "btn btn-danger" %></td>

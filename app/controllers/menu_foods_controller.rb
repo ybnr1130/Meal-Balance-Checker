@@ -3,7 +3,6 @@ class MenuFoodsController < ApplicationController
     @records = Food.food_serch_for(params[:content])
     @menu_food = MenuFood.new
     @menu = Menu.where(menu_id: params[:menu_id])
-    # ↑menu_idを検索時に代入しているので、そのidを@menuに代入
   end
 
   def create
@@ -19,9 +18,7 @@ class MenuFoodsController < ApplicationController
 
   def update
     @menu_food = MenuFood.find(params[:id])
-    p = @menu_food.id
     if @menu_food.update(menu_food_params)
-      redirect_to edit_menu_path(@menu_food.menu_id)
     else
       render :edit
     end

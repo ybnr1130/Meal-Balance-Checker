@@ -25,8 +25,9 @@ class MenuFoodsController < ApplicationController
   end
 
   def destroy
-    @menu_food = MenuFood.find(params[:id])
+    menu_food = MenuFood.find(params[:id])
     menu_food.destroy
+    redirect_to edit_menu_path(menu_food.menu_id)
   end
 
   private

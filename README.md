@@ -31,6 +31,3 @@ https://docs.google.com/spreadsheets/d/1JLTbYOdlPlcvrhfIFe-QPoISLJ3HoDHt77I2X9yG
 ## 使用素材
 - なし
 
-## 将来実装したい機能
-- スマホ、タブレットブラウザへの対応
-
